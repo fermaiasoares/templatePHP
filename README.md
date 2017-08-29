@@ -10,9 +10,9 @@ Tutorial de Templates em PHP
 
 1 - Descompacte o arquivo .zip
 
-2 - Você precisa criar uma pasta `lib` no seu projeto
+2 - Você precisa criar uma pasta `views` no seu projeto
 
-3 - Copie a pasta `raelgc` (e todo seu conteúdo) para dentro da pasta `lib` do seu projeto
+3 - Copie a pasta `solucaoi` (e todo seu conteúdo) para dentro da pasta `views` do seu projeto
 
 4 - Use `require_once` para incluir a classe Template e a diretiva `use` para informar o [namespace](http://www.php.net/manual/pt_BR/language.namespaces.rationale.php) da classe, da seguinte forma:
 
@@ -89,7 +89,7 @@ Então, como ficaria o código PHP que atribui valor a ela? Vamos a ele:
     use views\solucaoi\templatePHP;
 
     $tpl = new Template("hello.html");
-    $tpl->FULANO = "Rael";
+    $tpl->FULANO = "Solução";
     $tpl->show();
 
 ?>
@@ -100,7 +100,7 @@ Execute então novamente o script, e você verá que o código final gerado no n
     <html>
     <body>
 
-      Olá Rael, com templates PHP!
+      Olá Solução, com templates PHP!
 
     </body>
     </html>
@@ -120,7 +120,7 @@ Para ler o valor de uma variável, acesse do mesmo modo:
     $tpl = new Template("hello.html");
 
     // Atribuindo valor
-    $tpl->FULANO = "Rael";
+    $tpl->FULANO = "Solução";
 
     // Imprimindo o valor da variável
     die("Valor de FULANO: ".$tpl->FULANO);
@@ -148,7 +148,7 @@ Como é de se esperar, ele retorna true caso a variável exista. Caso não, reto
     $tpl = new Template("layout.html");
 
     // Checando existência da variável antes da atribuição
-    if($tpl->exists("FULANO")) $tpl->FULANO = "Rael";
+    if($tpl->exists("FULANO")) $tpl->FULANO = "Solução";
 
     $tpl->show();
 
@@ -189,12 +189,12 @@ E o seguinte HTML, já fazendo uso dos modificadores:
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<div>Nome: {NOME|replace:Fulano:Rael}</div>
+		<div>Nome: {NOME|replace:Fulano:Solução}</div>
 		<div>Valor: R$ {VALOR|str_pad:5:0:0},00</div>
 	</body>
 	</html>
 
-Explicando: a linha `{NOME|replace:Fulano:Rael}` equivale a chamar no PHP `replace('Fulano Ciclano da Silva', 'Fulano', 'Rael')`.
+Explicando: a linha `{NOME|replace:Fulano:Solução}` equivale a chamar no PHP `replace('Fulano Ciclano da Silva', 'Fulano', 'Solução')`.
 
 E essa função `replace`? É uma função declarada dentro da classe Template, que basicamente faz a mesma coisa que a função do PHP [`str_replace`](http://php.net/manual/pt_BR/function.str-replace.php) (substitui um texto por outro). A diferença é que ela recebe uma string como primeiro parâmetro. Lembre que essa é uma das condições para uma função poder ser usada dentro do HTML.
 
@@ -687,7 +687,7 @@ No arquivo PHP então, usamos o método addFile(), onde informamos duas coisas: 
     // Adicionando mais um arquivo HTML
     $tpl->addFile("CONTEUDO", "miolo.html");
 
-    $tpl->FULANO = "Rael";
+    $tpl->FULANO = "Solução";
 
     // Produtos cadastrados
     $produtos = array(
@@ -723,7 +723,7 @@ Até agora exibimos o conteúdo gerado pelo template na tela, através do métod
     $tpl->addFile("CONTEUDO", "miolo.html");
 
     // Variáveis, blocos, etc
-    $tpl->FULANO = "Rael";
+    $tpl->FULANO = "Solução";
 
     // Pega o conteúdo final do template
     $conteudo = $tpl->parse();
@@ -831,7 +831,7 @@ Veja o exemplo abaixo:
     <!---
 	Listagem de produtos.
 
-	@author Rael
+	@author Solução
 	@version 1.0
     --->
 
@@ -892,7 +892,7 @@ Faça isso com a instrução header() do PHP:
     $tpl = new Template("relatorio.html");
 
     // Variáveis, blocos, etc
-    $tpl->FULANO = "Rael";
+    $tpl->FULANO = "Solução";
 
     $tpl->show();
 
@@ -962,7 +962,7 @@ Repare que no arquivo HTML não há nada de diferente. No arquivo PHP então, ba
     $varname = "fulano";
 
     // Variável definida dinamicamente
-    $tpl->{"NOME_".strtoupper($varname)} = "Rael";
+    $tpl->{"NOME_".strtoupper($varname)} = "Solução";
 
     $tpl->show();
 
