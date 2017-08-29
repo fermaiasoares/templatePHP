@@ -1,5 +1,5 @@
 <?php
-namespace solucao\view {
+namespace solucaoi\view {
 
 	class templatePHP {
 
